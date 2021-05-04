@@ -3,33 +3,25 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Scanner;
 
 public class Connecter {
     private String link;
-
-    public Connecter() {
-
-    }
+    private final String requestMethod = "GET";
+    private final Boolean useCaches = false;
+    private final int timeout = 3000;
 
     public Connecter(String link) {
         this.link = link;
     }
 
-    public String enterLink(){
-        Scanner scanner = new Scanner(System.in);
-        setLink(scanner.next());
-        return link;
-    }
-
-    public HttpURLConnection httpURLConnection(String link){
+    private HttpURLConnection createConnection(){
         HttpURLConnection connection = null;
         try {
-            connection = (HttpURLConnection) new URL(link).openConnection();
-            connection.setRequestMethod("GET");
-            connection.setUseCaches(false);
-            connection.setConnectTimeout(3000);
-            connection.setReadTimeout(3000);
+            connection = (HttpURLConnection) new URL(this.link).openConnection();
+            connection.setRequestMethod(requestMethod);
+            connection.setUseCaches(useCaches);
+            connection.setConnectTimeout(timeout); //ЗНАЧЕНИЯ В СКОБКАХ ПОМЯНЕТЬ НА ПОЛЯ КЛАССА, КОТОРЫМ ПРИСВОИТЬ ЭТИ ЗНАЧЕНИЯ
+            connection.setReadTimeout(timeout);
             connection.connect();
         } catch (Throwable cause){
             cause.printStackTrace();
@@ -41,23 +33,24 @@ public class Connecter {
         return connection;
     }
 
-    public StringBuilder createText(HttpURLConnection connection) throws IOException {
-        StringBuilder stringBuilder = new StringBuilder();
-        if (HttpURLConnection.HTTP_OK == connection.getResponseCode()){
+    public StringBuilder createText() throws IOException {
+        HttpURLConnection connectionForInteraction = createConnection();
 
-            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        StringBuilder textOfHtml = new StringBuilder();
 
-            String line;
+        if (HttpURLConnection.HTTP_OK == connectionForInteraction.getResponseCode()){
 
-            while ((line = in.readLine()) != null){
-                stringBuilder.append(line);
-                stringBuilder.append("\n");
+            BufferedReader in = new BufferedReader(new InputStreamReader(connectionForInteraction.getInputStream()));
+            String stringOfHtml;
+
+            while ((stringOfHtml = in.readLine()) != null){
+                textOfHtml.append(stringOfHtml);
+                textOfHtml.append("\n");
             }
-
         } else {
-            System.out.println("fail: " + connection.getResponseCode() + ", " + connection.getResponseMessage());
+            System.out.println("fail: " + connectionForInteraction.getResponseCode() + ", " + connectionForInteraction.getResponseMessage());
         }
-        return stringBuilder;
+        return textOfHtml;
     }
 
     public String getLink() {

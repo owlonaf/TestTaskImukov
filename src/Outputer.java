@@ -9,6 +9,7 @@ public class Outputer {
     }
 
     public void countOfWordsOut(){
+        System.out.println("Count of words:\n");
         for (Map.Entry entry: this.countOfWords.entrySet()) {
 
             System.out.println(entry); //ЗАПРИВАТИТЬ ВСЕ МЕТОДЫ И ВЫЗЫВАТЬ ОТСЮДА ТОЛЬКО ОДИН

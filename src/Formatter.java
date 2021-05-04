@@ -29,20 +29,21 @@ public class Formatter {
 
         private String[] stringToLowerCase(){
             String[] finalStrings = divisionTextForStrings();
-            for (int i = 0; i < divisionTextForStrings().length; i++){
-                finalStrings[i] = divisionTextForStrings()[i].toLowerCase(); //ПОМЕНЯТЬ НАЗВАНИИЯ ВСЕХ ПЕРЕМЕННЫХ НА ЛОГИЧНЫЕ
+            for (int i = 0; i < finalStrings.length; i++){
+                finalStrings[i] = finalStrings[i].toLowerCase(); //ПОМЕНЯТЬ НАЗВАНИИЯ ВСЕХ ПЕРЕМЕННЫХ НА ЛОГИЧНЫЕ
             }
             return finalStrings;
         }
 
         public HashMap<String, Integer> countingOfStrings(){
             HashMap<String, Integer> counterOfWords = new HashMap<>();
-            for(int i = 0; i < stringToLowerCase().length; i++) {
-                if (counterOfWords.containsKey(stringToLowerCase()[i]) == false){ //ВЫНЕСТИ В ОТДЕЛЬНЫЙ КЛАСС
-                    counterOfWords.put(stringToLowerCase()[i], 1);
+            String[] finalStrings = stringToLowerCase();
+            for(int i = 0; i < finalStrings.length; i++) {
+                if (counterOfWords.containsKey(finalStrings[i]) == false){ //ВЫНЕСТИ В ОТДЕЛЬНЫЙ КЛАСС
+                    counterOfWords.put(finalStrings[i], 1);
                 } else {
-                    int v = counterOfWords.get(stringToLowerCase()[i]);
-                    counterOfWords.put(stringToLowerCase()[i], v+1);
+                    int v = counterOfWords.get(finalStrings[i]);
+                    counterOfWords.put(finalStrings[i], v+1);
                 }
             }
             return counterOfWords;
