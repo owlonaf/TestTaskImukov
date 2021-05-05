@@ -13,5 +13,6 @@ public class TestMain {
         outputer.countOfWordsOut();
         Cleaner cleaner = new Cleaner(formatter.countingOfStrings());
         cleaner.clean();
+        cleaner.showClearResult();
     }
 }
