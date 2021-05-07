@@ -20,7 +20,7 @@ public class Connecter {
             connection = (HttpURLConnection) new URL(this.link).openConnection();
             connection.setRequestMethod(requestMethod);
             connection.setUseCaches(useCaches);
-            connection.setConnectTimeout(timeout); //ЗНАЧЕНИЯ В СКОБКАХ ПОМЯНЕТЬ НА ПОЛЯ КЛАССА, КОТОРЫМ ПРИСВОИТЬ ЭТИ ЗНАЧЕНИЯ
+            connection.setConnectTimeout(timeout);
             connection.setReadTimeout(timeout);
             connection.connect();
         } catch (Throwable cause){

@@ -23,14 +23,14 @@ public class Formatter {
         private String[] divisionTextForStrings(){
             String[] strings;
             String delimeter = "\n+"; // Разделитель
-            strings = clearingJunk().split(delimeter); // Разделения строки str с помощью метода split()
+            strings = clearingJunk().split(delimeter);
             return strings;
         }
 
         private String[] stringToLowerCase(){
             String[] finalStrings = divisionTextForStrings();
             for (int i = 0; i < finalStrings.length; i++){
-                finalStrings[i] = finalStrings[i].toLowerCase(); //ПОМЕНЯТЬ НАЗВАНИИЯ ВСЕХ ПЕРЕМЕННЫХ НА ЛОГИЧНЫЕ
+                finalStrings[i] = finalStrings[i].toLowerCase();
             }
             return finalStrings;
         }
@@ -39,7 +39,7 @@ public class Formatter {
             HashMap<String, Integer> counterOfWords = new HashMap<>();
             String[] finalStrings = stringToLowerCase();
             for(int i = 0; i < finalStrings.length; i++) {
-                if (counterOfWords.containsKey(finalStrings[i]) == false){ //ВЫНЕСТИ В ОТДЕЛЬНЫЙ КЛАСС
+                if (counterOfWords.containsKey(finalStrings[i]) == false){
                     counterOfWords.put(finalStrings[i], 1);
                 } else {
                     int v = counterOfWords.get(finalStrings[i]);
