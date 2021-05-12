@@ -5,14 +5,14 @@ import java.util.Scanner;
 public class Cleaner {
 
     public static void clean(Map<String, Integer> list) throws IOException {
-        System.out.println("If you want to delete any word from the list - type this line, else type end");
+        System.out.println("If you want to delete any word from the list - type this word, else type end");
         Scanner scanner = new Scanner(System.in);
         String input = "";
         while (!input.equals("end")) {
             input = scanner.next();
             if (!input.equals("end")) {
                 if (!list.containsKey(input)) {
-                    System.out.println("You've printed the wrong word\nIf you want to end programm working, please, type word 'end'");
+                    System.out.println("You've printed the wrong word\nIf you want to end programm working, please, type word 'end', else print existing word");
                     Outputer.saveInFile(list);
                 } else {
                     list.remove(input);

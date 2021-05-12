@@ -1,0 +1,10 @@
+мая 11, 2021 10:54:04 AM Connecter createConnection
+WARNING: Error is happened
+java.net.MalformedURLException: no protocol: ghddhg
+	at java.base/java.net.URL.<init>(URL.java:672)
+	at java.base/java.net.URL.<init>(URL.java:568)
+	at java.base/java.net.URL.<init>(URL.java:515)
+	at Connecter.createConnection(Connecter.java:26)
+	at Connecter.getText(Connecter.java:49)
+	at TestMain.main(TestMain.java:15)
+

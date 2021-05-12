@@ -42,7 +42,7 @@ public class Formatter {
                 counterOfWords.put(wordLowerCase, v + 1);
             }
         }
-
+        counterOfWords.remove("");
         return counterOfWords;
     }
 }
